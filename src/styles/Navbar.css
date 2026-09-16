@@ -1,0 +1,37 @@
+/* Structure de la navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+}
+
+/* Pousse les éléments à droite */
+.login-right {
+  margin-left: auto;
+}
+
+/* Bouton Connexion + Déconnexion */
+.login-right button,
+.logout-btn {
+  background: #e50914;
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-right button:hover,
+.logout-btn:hover {
+  background: #b00610;
+}
+
+/* Texte "Connecté en tant que :" */
+.connected-as {
+  margin-left: auto;
+  color: #ccc;
+  font-size: 0.9rem;
+  padding-right: 10px;
+}

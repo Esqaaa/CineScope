@@ -1,0 +1,47 @@
+/* --- MESSAGE DE CHARGEMENT --- */
+.loading {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  color: #ccc;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* --- BLOC ERREUR --- */
+.error-block {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid #333;
+  background: #111;
+  border-radius: 10px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-block p {
+  color: #e50914;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* --- BOUTON REESSAYER --- */
+.retry-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.4rem;
+  background: #e50914;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.retry-button:hover {
+  background: #b00610;
+  transform: scale(1.05);
+}

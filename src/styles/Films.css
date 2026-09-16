@@ -1,0 +1,54 @@
+/* --- CONTENEUR PAGINATION --- */
+.pagination {
+  margin-top: 2.5rem;
+  padding: 1.8rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  background: #0d0d0d;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* --- BOUTONS PAGINATION --- */
+.pagination button {
+  padding: 0.75rem 1.5rem;
+  background: #e50914;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Netflix */
+.pagination button:hover:not(:disabled) {
+  background: #b00610;
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+}
+
+/* Désactivé */
+.pagination button:disabled {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --- TEXTE PAGE X SUR Y --- */
+.page-info {
+  color: #ccc;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+
+

@@ -1,0 +1,41 @@
+.notfound {
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.nf-title {
+  font-size: 3rem;
+  color: #e50914;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.nf-message {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.nf-button {
+  background: #e50914;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.nf-button:hover {
+  background: #b00610;
+}

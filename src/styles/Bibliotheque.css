@@ -1,0 +1,140 @@
+/* --- PAGE GLOBALE --- */
+.library-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* --- TITRE PRINCIPAL --- */
+.library-page h2 {
+  font-size: 2.6rem;
+  color: #e50914;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+/* --- GRID DES 3 BLOCS --- */
+.library-page .library-grid {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* --- BLOC INDIVIDUEL --- */
+.library-page .library-block {
+  background: #0d0d0d;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.library-page .library-block:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(0,0,0,0.6);
+}
+
+/* --- TITRE DU BLOC --- */
+.library-page .library-block h3 {
+  font-size: 1.8rem;
+  color: #e50914;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(229, 9, 20, 0.3);
+}
+
+/* --- MESSAGE VIDE --- */
+.library-page .empty-category {
+  color: #bbb;
+  font-size: 1.15rem;
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* --- GRILLE DES FILMS --- */
+.library-page .movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* --- ITEM FILM --- */
+.library-page .library-item {
+  width: 160px;
+  background: #111;
+  padding: 0.8rem;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.library-page .library-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+}
+
+/* --- MOVIE CARD COMPACTE --- */
+.library-page .library-item .movie-card {
+  width: 150px;
+  min-height: 260px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.library-page .library-item .movie-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.library-page .library-item .movie-card button,
+.library-page .library-item .movie-card select {
+  font-size: 0.75rem;
+  padding: 5px;
+  width: 100%;
+}
+
+/* --- BOUTONS CATÉGORIE --- */
+.library-page .category-buttons {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.library-page .category-buttons button {
+  width: 100%;
+  padding: 6px;
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.library-page .category-buttons button:hover {
+  background: #e50914;
+  border-color: #e50914;
+  transform: scale(1.05);
+}
+
+/* --- SECTION COMPACTE --- */
+.library-page .library-category {
+  padding: 10px 0 20px 0;
+  min-height: auto;
+}

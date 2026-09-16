@@ -1,0 +1,82 @@
+.home {
+  position: relative;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Fond subtil façon Netflix */
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, #1a1a1a 0%, #000 70%);
+  opacity: 0.9;
+}
+
+/* Contenu centré */
+.home-content {
+  position: relative;
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem;
+  z-index: 2;
+}
+
+/* Titre rouge Netflix */
+.home-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #e50914;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+/* Sous-titre clean */
+.home-subtitle {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin-bottom: 2.5rem;
+}
+
+/* Boutons */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Bouton principal */
+.btn-primary {
+  background: #e50914;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #b00610;
+}
+
+/* Boutons secondaires */
+.btn-secondary {
+  background: #222;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #333;
+}

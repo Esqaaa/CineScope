@@ -1,0 +1,173 @@
+/* --- PAGE FILM --- */
+.movie-page {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  animation: fadeIn 0.4s ease;
+}
+
+/* Animation légère */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- BOUTON RETOUR --- */
+.back-button {
+  background: #e50914;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background: #b00610;
+}
+
+.back-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 1rem;
+}
+
+
+/* --- BLOC AFFICHE + TEXTE CENTRÉ --- */
+.movie-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 👉 affiche centrée */
+  text-align: center;  /* 👉 texte centré */
+  max-width: 800px;
+}
+
+/* --- AFFICHE --- */
+.movie-header img {
+  width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.movie-header img:hover {
+  transform: scale(1.03);
+}
+
+/* --- CONTENU --- */
+.movie-page-content {
+  max-width: 700px;
+  width: 100%;
+}
+
+/* --- TITRE --- */
+.movie-page-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #e50914;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* --- INFOS --- */
+.movie-info {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.movie-info p {
+  margin: 0.3rem 0;
+}
+
+/* --- GENRES --- */
+.genres {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.genre-badge {
+  display: inline-block;
+  background: #1c1c1c;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  color: #e50914;
+  border: 1px solid #333;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.genre-badge:hover {
+  background: #2a2a2a;
+}
+
+/* --- DESCRIPTION --- */
+.movie-description {
+  margin-top: 1.8rem;
+  line-height: 1.7;
+  color: #ccc;
+  font-size: 1.15rem;
+}
+
+/* --- BOUTON FAVORI --- */
+.fav-button {
+  background: #333;
+  border: 1px solid #555;
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.fav-button:hover {
+  background: #e50914;
+  color: #fff;
+  border-color: #e50914;
+}
+
+/* --- SECTION ACTEURS --- */
+.actors-section {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid #333;
+  text-align: center;
+}
+
+.actors-section h3 {
+  font-size: 2rem;
+  color: #e50914;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* --- GRILLE ACTEURS --- */
+.actors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+  justify-items: center; 
+  width: 100%;           
+}
+
