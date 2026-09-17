@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { fetchPopularMovies } from "../utils/tmdb";
 import { convertTMDB } from "../utils/tmdbConverter";
 import type { Movie } from "../utils/types";
@@ -9,21 +9,33 @@ export function useMovies(page: number) {
   const [error, setError] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
+  const loadMovies = useCallback(() => {
+    let isCancelled = false;
     setLoading(true);
     setError(false);
 
     fetchPopularMovies(page)
       .then((data) => {
+        if (isCancelled) return;
         setMovies(data.results.map(convertTMDB));
         setTotalPages(data.total_pages);
-        setLoading(false);
       })
       .catch(() => {
-        setError(true);
-        setLoading(false);
+        if (!isCancelled) setError(true);
+      })
+      .finally(() => {
+        if (!isCancelled) setLoading(false);
       });
+
+    return () => {
+      isCancelled = true;
+    };
   }, [page]);
 
-  return { movies, loading, error, totalPages };
+  useEffect(() => {
+    const cleanup = loadMovies();
+    return cleanup;
+  }, [loadMovies]);
+
+  return { movies, loading, error, totalPages, refetch: loadMovies };
 }

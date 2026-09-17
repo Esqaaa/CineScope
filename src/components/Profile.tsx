@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css";
 
-function Profile() {
+interface ProfileProps {
+  setIsAuthenticated?: (auth: boolean) => void;
+}
+
+function Profile({ setIsAuthenticated }: ProfileProps) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [pseudo, setPseudo] = useState("");
@@ -10,7 +14,7 @@ function Profile() {
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const saved = localStorage.getItem("user");
@@ -38,15 +42,21 @@ function Profile() {
       bio,
     };
 
+    // Enregistre les données et connecte l'utilisateur
     localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("logged", "true");
+
+    if (setIsAuthenticated) {
+      setIsAuthenticated(true);
+    }
 
     alert("Profil enregistré !");
-    navigate("/"); 
+    navigate("/");
   }
 
   return (
     <section className="profile-page">
-      <h2>Mon profil</h2>
+      <h2>Mon profil / Inscription</h2>
 
       <form className="profile-form" onSubmit={handleSubmit}>
         <label>Prénom</label>
@@ -97,7 +107,7 @@ function Profile() {
         />
 
         <button type="submit" className="profile-button">
-          Enregistrer mon profil
+          Enregistrer et se connecter
         </button>
       </form>
     </section>

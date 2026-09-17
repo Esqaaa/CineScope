@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, type JSX } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import MoviePage from "./components/MoviePage";
 import Bibliotheque from "./components/Bibliotheque";
 import Home from "./components/Home";
-import SearchBar from "./components/SearchBar";
 import NotFound from "./components/NotFound";
 import Films from "./components/Films";
 import Favoris from "./components/Favorites";
@@ -14,14 +13,28 @@ import Login from "./components/Login";
 
 import "./styles/App.css";
 
-
-
+// Composant pour protéger les routes réservées aux utilisateurs connectés
+function ProtectedRoute({
+  isAuthenticated,
+  children,
+}: {
+  isAuthenticated: boolean;
+  children: JSX.Element;
+}) {
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
 
 function App() {
+  // Lit directement le localStorage au démarrage
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
+    () => localStorage.getItem("logged") === "true"
+  );
+
   const [library, setLibrary] = useState<number[]>([]);
   const [favorites, setFavorites] = useState<number[]>([]);
-
-
   const [toWatch, setToWatch] = useState<number[]>([]);
   const [inProgress, setInProgress] = useState<number[]>([]);
   const [watched, setWatched] = useState<number[]>([]);
@@ -29,36 +42,51 @@ function App() {
   return (
     <BrowserRouter>
       <main>
-        <Navbar />
+        {/* On masque la Navbar si l'utilisateur n'est pas connecté */}
+        {isAuthenticated && <Navbar />}
 
         <Routes>
-          <Route 
-              path="/" 
-              element={<Home />} 
+          {/* Page de connexion (Accessible hors connexion) */}
+          <Route
+            path="/login"
+            element={
+              isAuthenticated ? (
+                <Navigate to="/" replace />
+              ) : (
+                <Login setIsAuthenticated={setIsAuthenticated} />
+              )
+            }
           />
 
+          {/* Page Profil / Inscription (Accessible à tous pour la création de compte) */}
+          <Route
+            path="/profil"
+            element={<Profile setIsAuthenticated={setIsAuthenticated} />}
+          />
+
+          {/* Routes protégées (Redirigent vers /login si pas connecté) */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/favoris"
             element={
-              <Favoris
-                favorites={favorites}
-                setFavorites={setFavorites}
-              />
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Favoris favorites={favorites} setFavorites={setFavorites} />
+              </ProtectedRoute>
             }
           />
 
           <Route
             path="/film"
             element={
-              <>
-                <SearchBar
-                  favorites={favorites}
-                  setFavorites={setFavorites}
-                  library={library}
-                  setLibrary={setLibrary}
-                />
-
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <Films
                   favorites={favorites}
                   setFavorites={setFavorites}
@@ -71,13 +99,14 @@ function App() {
                   setInProgress={setInProgress}
                   setWatched={setWatched}
                 />
-              </>
+              </ProtectedRoute>
             }
           />
 
-            <Route
-              path="/film/:id"
-              element={
+          <Route
+            path="/film/:id"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <MoviePage
                   favorites={favorites}
                   setFavorites={setFavorites}
@@ -90,46 +119,31 @@ function App() {
                   watched={watched}
                   setWatched={setWatched}
                 />
-
-              }
-            />
-
-
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/bibliotheque"
             element={
-              <Bibliotheque
-                library={library}
-                setLibrary={setLibrary}
-                favorites={favorites}
-                setFavorites={setFavorites}
-                toWatch={toWatch}
-                inProgress={inProgress}
-                watched={watched}
-                setToWatch={setToWatch}
-                setInProgress={setInProgress}
-                setWatched={setWatched}
-              />
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Bibliotheque
+                  library={library}
+                  setLibrary={setLibrary}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
+                  toWatch={toWatch}
+                  inProgress={inProgress}
+                  watched={watched}
+                  setToWatch={setToWatch}
+                  setInProgress={setInProgress}
+                  setWatched={setWatched}
+                />
+              </ProtectedRoute>
             }
           />
 
-          <Route path="/profil" 
-            element={<Profile />} 
-          />
-
-          <Route path="/login" 
-            element={<Login />} 
-          />
-
-
-
-          <Route 
-            path="*" 
-            element={<NotFound />} 
-          />
-
-
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </BrowserRouter>

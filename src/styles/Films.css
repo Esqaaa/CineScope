@@ -51,4 +51,54 @@
   text-shadow: 0 0 8px rgba(255,255,255,0.15);
 }
 
+/* --- Bloc d'erreur et bouton Réessayer --- */
+.error-block {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #181818;
+  border: 1px solid #333;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 2rem auto;
+}
 
+.error-block p {
+  color: #e50914;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.error-block .retry-button {
+  padding: 0.6rem 1.5rem;
+  background: #e50914;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.error-block .retry-button:hover {
+  background: #b00610;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.45);
+}
+
+/* --- Style pour le message Aucun résultat --- */
+.no-results {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  background-color: #181818;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  color: #e50914;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

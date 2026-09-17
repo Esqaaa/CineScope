@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
-function Login() {
+interface LoginProps {
+  setIsAuthenticated: (auth: boolean) => void;
+}
+
+function Login({ setIsAuthenticated }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +19,7 @@ function Login() {
     const saved = localStorage.getItem("user");
 
     if (!saved) {
-      setError("Aucun compte n'existe. Veuillez en créer un dans Profil.");
+      setError("Aucun compte trouvé. Veuillez en créer un ci-dessous.");
       return;
     }
 
@@ -23,6 +27,7 @@ function Login() {
 
     if (email === user.email && password === user.password) {
       localStorage.setItem("logged", "true");
+      setIsAuthenticated(true);
       navigate("/");
     } else {
       setError("Identifiants incorrects.");
@@ -56,6 +61,18 @@ function Login() {
           Se connecter
         </button>
       </form>
+
+      <div style={{ marginTop: "1.5rem", textAlign: "center" }}>
+        <p>Pas encore de compte ?</p>
+        <button
+          type="button"
+          onClick={() => navigate("/profil")}
+          className="login-button"
+          style={{ backgroundColor: "#444", marginTop: "0.5rem" }}
+        >
+          Créer un compte
+        </button>
+      </div>
     </section>
   );
 }
