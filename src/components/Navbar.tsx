@@ -32,12 +32,12 @@ function Navbar() {
         <button>Accueil</button>
       </Link>
 
-      <Link to="/favoris">
-        <button>Favoris</button>
-      </Link>
-
       <Link to="/film">
         <button>Films</button>
+      </Link>
+
+      <Link to="/favoris">
+        <button>Favoris</button>
       </Link>
 
       <Link to="/bibliotheque">
@@ -48,21 +48,22 @@ function Navbar() {
         <button>Profil</button>
       </Link>
 
-      {logged && (
-        <p className="connected-as">Connecté en tant que : {user.pseudo}</p>
-      )}
+      {/* Regroupement à droite */}
+      <div className="login-right">
+        {logged && (
+          <p className="connected-as">Connecté en tant que : {user.pseudo}</p>
+        )}
 
-      {!logged && (
-        <Link to="/login" className="login-right">
-          <button>Connexion</button>
-        </Link>
-      )}
-
-      {logged && (
-        <button className="logout-btn login-right" onClick={handleLogout}>
-          Déconnexion
-        </button>
-      )}
+        {!logged ? (
+          <Link to="/login">
+            <button>Connexion</button>
+          </Link>
+        ) : (
+          <button className="logout-btn" onClick={handleLogout}>
+            Déconnexion
+          </button>
+        )}
+      </div>
     </nav>
   );
 }

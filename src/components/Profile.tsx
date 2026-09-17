@@ -51,7 +51,7 @@ function Profile({ setIsAuthenticated }: ProfileProps) {
     }
 
     alert("Profil enregistré !");
-    navigate("/");
+    navigate("/film");
   }
 
   return (

@@ -6,9 +6,20 @@
   padding: 10px 20px;
 }
 
-/* Pousse les éléments à droite */
+/* Regroupement des éléments alignés à droite (Pseudo + Bouton) */
 .login-right {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espace entre "Connecté en tant que" et le bouton */
+}
+
+/* Texte "Connecté en tant que :" */
+.connected-as {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0;
+  white-space: nowrap; /* Évite d'avoir le texte découpé sur deux lignes */
 }
 
 /* Bouton Connexion + Déconnexion */
@@ -26,12 +37,4 @@
 .login-right button:hover,
 .logout-btn:hover {
   background: #b00610;
-}
-
-/* Texte "Connecté en tant que :" */
-.connected-as {
-  margin-left: auto;
-  color: #ccc;
-  font-size: 0.9rem;
-  padding-right: 10px;
 }

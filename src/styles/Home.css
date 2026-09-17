@@ -1,6 +1,6 @@
 .home {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 60px); /* S'adapte sous la navbar sans dépasser de l'écran */
   background: #000;
   display: flex;
   justify-content: center;

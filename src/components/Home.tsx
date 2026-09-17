@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
-
 function Home() {
+  useEffect(() => {
+    // Bloque le scroll du navigateur
+    document.body.style.overflow = "hidden";
+
+    // Réactive le scroll dès qu'on quitte la page d'accueil
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
   return (
     <section className="home">
       <div className="home-overlay" />
