@@ -9,9 +9,8 @@ import { useFavorites } from "../context/FavoritesContext";
 import { useLibrary } from "../context/LibraryContext";
 
 function Bibliotheque() {
-
   const { favorites } = useFavorites();
-  const { library, setStatus } = useLibrary();
+  const { library } = useLibrary();
 
   const [libraryMovies, setLibraryMovies] = useState<Movie[]>([]);
 
@@ -21,7 +20,9 @@ function Bibliotheque() {
 
       for (const id of Object.keys(library)) {
         const data = await fetchMovieDetails(Number(id));
-        results.push(convertTMDB(data));
+        if (data) {
+          results.push(convertTMDB(data));
+        }
       }
 
       setLibraryMovies(results);
@@ -42,21 +43,7 @@ function Bibliotheque() {
         ) : (
           <div className="movie-grid">
             {films.map((movie) => (
-              <div key={movie.id} className="library-item">
-                <MovieCard {...movie} />
-
-                <div className="category-buttons">
-                  <button onClick={() => setStatus(movie.id, "towatch")}>
-                    À regarder
-                  </button>
-                  <button onClick={() => setStatus(movie.id, "inprogress")}>
-                    En cours
-                  </button>
-                  <button onClick={() => setStatus(movie.id, "watched")}>
-                    Vu
-                  </button>
-                </div>
-              </div>
+              <MovieCard key={movie.id} {...movie} isLibrary={true} />
             ))}
           </div>
         )}
@@ -68,7 +55,7 @@ function Bibliotheque() {
     <section className="library-page">
       <h2>Ma bibliothèque</h2>
 
-      <div className="library-grid">
+      <div className="library-columns">
         <div className="library-block">
           {renderCategory("À regarder", "towatch")}
         </div>

@@ -5,8 +5,12 @@ import "../styles/MovieCard.css";
 import { useFavorites } from "../context/FavoritesContext";
 import { useLibrary } from "../context/LibraryContext";
 
-function MovieCard({ id, title, poster, releaseDate }: Movie) {
 
+interface MovieCardProps extends Movie {
+  isLibrary?: boolean;
+}
+
+function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieCardProps) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
   const { addToLibrary, setStatus } = useLibrary();
 
@@ -31,19 +35,24 @@ function MovieCard({ id, title, poster, releaseDate }: Movie) {
       <h3>{title}</h3>
       <p>{releaseDate}</p>
 
-      <button onClick={handleFavorite}>
-        {isFavorite(id) ? "Retirer des favoris" : "Ajouter aux favoris"}
-      </button>
+      {/* On masque ces contrôles en mode bibliothèque */}
+      {!isLibrary && (
+        <>
+          <button onClick={handleFavorite}>
+            {isFavorite(id) ? "Retirer des favoris" : "Ajouter aux favoris"}
+          </button>
 
-      <select
-        className="category-select"
-        onChange={(e) => handleCategoryChange(e.target.value)}
-      >
-        <option value="">Catégorie...</option>
-        <option value="towatch">À regarder</option>
-        <option value="inprogress">En cours</option>
-        <option value="watched">Vu</option>
-      </select>
+          <select
+            className="category-select"
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          >
+            <option value="">Catégorie...</option>
+            <option value="towatch">À regarder</option>
+            <option value="inprogress">En cours</option>
+            <option value="watched">Vu</option>
+          </select>
+        </>
+      )}
 
       <Link to={`/film/${id}`}>
         <button className="view-button">Voir le film</button>
