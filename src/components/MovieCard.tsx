@@ -5,14 +5,22 @@ import "../styles/MovieCard.css";
 import { useFavorites } from "../context/FavoritesContext";
 import { useLibrary } from "../context/LibraryContext";
 
-
 interface MovieCardProps extends Movie {
   isLibrary?: boolean;
 }
 
+const STATUS_LABELS: Record<string, string> = {
+  towatch: "À regarder",
+  inprogress: "En cours",
+  watched: "Vu",
+};
+
 function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieCardProps) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
-  const { addToLibrary, setStatus } = useLibrary();
+  const { library, addToLibrary, setStatus } = useLibrary();
+
+  // On récupère le statut actuel du film
+  const currentStatus = library[id];
 
   function handleFavorite() {
     isFavorite(id) ? removeFavorite(id) : addFavorite(id);
@@ -26,16 +34,25 @@ function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieC
 
   return (
     <div className="movie-card">
-      {poster ? (
-        <img src={poster} alt={title} />
-      ) : (
-        <div className="no-poster">Affiche indisponible</div>
-      )}
+      <div className="poster-container">
+        {poster ? (
+          <img src={poster} alt={title} />
+        ) : (
+          <div className="no-poster">Affiche indisponible</div>
+        )}
+
+        {/* Badge : Affiche toujours le statut actuel en mode bibliothèque */}
+        {isLibrary && currentStatus && (
+          <span className={`status-badge status-${currentStatus}`}>
+            {STATUS_LABELS[currentStatus]}
+          </span>
+        )}
+      </div>
 
       <h3>{title}</h3>
       <p>{releaseDate}</p>
 
-      {/* On masque ces contrôles en mode bibliothèque */}
+      {/* Mode Hors Bibliothèque (Recherche / Catalogue) */}
       {!isLibrary && (
         <>
           <button onClick={handleFavorite}>
@@ -44,6 +61,7 @@ function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieC
 
           <select
             className="category-select"
+            value={currentStatus || ""}
             onChange={(e) => handleCategoryChange(e.target.value)}
           >
             <option value="">Catégorie...</option>
@@ -52,6 +70,19 @@ function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieC
             <option value="watched">Vu</option>
           </select>
         </>
+      )}
+
+      {/* Mode Bibliothèque : Permet de changer le statut dans les 2 sens */}
+      {isLibrary && (
+        <select
+          className="category-select"
+          value={currentStatus || "towatch"}
+          onChange={(e) => setStatus(id, e.target.value as "towatch" | "inprogress" | "watched")}
+        >
+          <option value="towatch">À regarder</option>
+          <option value="inprogress">En cours</option>
+          <option value="watched">Vu</option>
+        </select>
       )}
 
       <Link to={`/film/${id}`}>
