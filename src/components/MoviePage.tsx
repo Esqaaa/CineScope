@@ -1,35 +1,34 @@
 import "../styles/MoviePage.css";
 import { useParams, Link } from "react-router-dom";
 import ActorCard from "../components/ActorCard";
+import { Rating } from "../components/Rating";
 
 import { useFavorites } from "../context/FavoritesContext";
-import { useLibrary } from "../context/LibraryContext";
-
 import { useMovieDetails } from "../hooks/useMovieDetails";
 
-// Détails d'un film
+// Page de détails d'un film
 function MoviePage() {
   const { id } = useParams();
   const { movie, actors, loading, error } = useMovieDetails(Number(id));
 
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
-  const { library, addToLibrary, setStatus } = useLibrary();
 
-  // Gestion favoris
+  // Gestion des favoris
   function toggleFavorite() {
-    if (isFavorite(movie!.id)) {
-      removeFavorite(movie!.id);
+    if (!movie) return;
+    if (isFavorite(movie.id)) {
+      removeFavorite(movie.id);
     } else {
-      addFavorite(movie!.id);
+      addFavorite(movie.id);
     }
   }
 
-  // Chargement
+  // Écran de chargement
   if (loading) {
     return <div className="loading">Chargement du film...</div>;
   }
 
-  // Erreur réseau
+  // Erreur de chargement
   if (error) {
     return (
       <div className="error-block">
@@ -50,27 +49,27 @@ function MoviePage() {
 
   return (
     <section className="movie-page">
-      {/* Bouton de retour */}
+      {/* Bouton retour */}
       <div className="back-wrapper">
         <Link to="/film">
           <button className="back-button">Retour aux films</button>
         </Link>
       </div>
 
-      {/* Informations principales et affiche */}
+      {/* Détails du film */}
       <div className="movie-header">
         <img src={movie.poster ?? ""} alt={movie.title} />
 
         <div className="movie-page-content">
           <h2>{movie.title}</h2>
 
-          {/* Métadonnées du film */}
+          {/* Métadonnées */}
           <div className="movie-info">
             <p>
               <strong>Année :</strong> {movie.releaseDate}
             </p>
             <p>
-              <strong>Note :</strong> {movie.rating}
+              <strong>Note TMDB :</strong> {movie.rating}
             </p>
             <p>
               <strong>Votes :</strong> {movie.votes}
@@ -86,17 +85,22 @@ function MoviePage() {
             </p>
           </div>
 
+          {/* Notation personnelle par étoiles */} <br />
+          <div style={{ margin: "15px 0", textAlign: "center" }}>
+            <strong>Votre note :</strong>
+            <Rating movieId={movie.id} />
+          </div>
+
+          {/* Action favoris */}
           <button className="fav-button" onClick={toggleFavorite}>
-            {isFavorite(movie.id)
-              ? "Retirer des favoris"
-              : "Ajouter aux favoris"}
+            {isFavorite(movie.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
           </button>
 
           <div className="movie-description">{movie.description}</div>
         </div>
       </div>
 
-      {/* Section des acteurs */}
+      {/* Liste des acteurs */}
       <div className="actors-section">
         <h3>Acteurs</h3>
         <div className="actors-grid">

@@ -17,7 +17,7 @@
   letter-spacing: 0.5px;
 }
 
-/* GRID DES 3 BLOCS */
+/* GRID DES 3 BLOCS DE CATEGORIE */
 .library-page .library-grid {
   display: flex;
   gap: 20px;
@@ -30,7 +30,7 @@
   flex: 1; 
   min-width: 0; 
   background: #181818;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 10px;
   border: 1px solid #282828;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -60,18 +60,17 @@
   font-style: italic;
 }
 
-/* GRILLE DES FILMS */
+/* ✅ GRILLE DES FILMS CORRIGÉE (Pour afficher 2 colonnes par bloc) */
 .library-page .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* Taille minimale réduite */
+  gap: 12px;
+  width: 100%;
 }
 
 /* ITEM FILM */
 .library-page .library-item {
-  width: 100%;
-  max-width: 150px;
+  width: 100%; /* S'adapte parfaitement à la colonne */
   background: #222;
   padding: 8px;
   border-radius: 8px;
@@ -80,6 +79,7 @@
   flex-direction: column;
   gap: 8px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
 .library-page .library-item:hover {
@@ -101,7 +101,7 @@
 
 .library-page .library-item .movie-card img {
   width: 100%;
-  height: 200px;
+  height: 160px; /* Agrandit/réduit proprement selon la largeur */
   object-fit: cover;
   border-radius: 6px;
 }
@@ -117,7 +117,7 @@
   border-radius: 4px;
 }
 
-/* BOUTONS CATÉGORIE  */
+/* BOUTONS CATÉGORIE */
 .library-page .category-buttons {
   margin-top: 0.4rem;
   display: flex;
@@ -141,4 +141,11 @@
   background: #e50914;
   border-color: #e50914;
   color: #fff;
+}
+
+/* RESPONSIVE TABLETTE/MOBILE */
+@media (max-width: 900px) {
+  .library-page .library-grid {
+    flex-direction: column;
+  }
 }

@@ -1,13 +1,13 @@
 import "../styles/Bibliotheque.css";
 import { useLibraryMovies } from "../hooks/useLibraryMovies";
-import { LibraryCategory } from "./LibraryCategory";
+import { LibraryCategory } from "../components/LibraryCategory";
 
-// Page principale de la bibliothèque 
+// Page principale de la bibliothèque
 function Bibliotheque() {
-  // Récupération des films classés et état via hook 
+  // Récupération des films classés par statut via le hook
   const { getMoviesByStatus, loading } = useLibraryMovies();
 
-  // Affichage de l'indicateur de chargement
+  // Indicateur de chargement
   if (loading) {
     return (
       <section className="library-page">
@@ -17,7 +17,7 @@ function Bibliotheque() {
     );
   }
 
-  // Structure des 3 colonnes de tri : "À regarder", "En cours", "Vu"
+  // Organisation en 3 colonnes de catégories
   return (
     <section className="library-page">
       <h2>Ma bibliothèque</h2>

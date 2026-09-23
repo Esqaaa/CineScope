@@ -4,6 +4,7 @@ import "../styles/MovieCard.css";
 
 import { useFavorites } from "../context/FavoritesContext";
 import { useLibrary } from "../context/LibraryContext";
+import { Rating } from "./Rating";
 
 interface MovieCardProps extends Movie {
   isLibrary?: boolean;
