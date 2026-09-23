@@ -1,23 +1,23 @@
-/* --- PAGE GLOBALE --- */
+/* PAGE GLOBALE */
 .library-page {
   padding: 2rem;
   min-height: 100vh;
-  background: #141414; /* Fond gris très foncé style Netflix au lieu du noir pur */
+  background: #141414; 
   color: #fff;
   font-family: Arial, sans-serif;
 }
 
-/* --- TITRE PRINCIPAL --- */
+/* TITRE PRINCIPAL */
 .library-page h2 {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #fff; /* Blanc épuré au lieu du rouge agressif */
+  color: #fff; 
   text-align: center;
   margin-bottom: 2.5rem;
   letter-spacing: 0.5px;
 }
 
-/* --- GRID DES 3 BLOCS --- */
+/* GRID DES 3 BLOCS */
 .library-page .library-grid {
   display: flex;
   gap: 20px;
@@ -25,10 +25,10 @@
   justify-content: center;
 }
 
-/* --- BLOC INDIVIDUEL --- */
+/* BLOC INDIVIDUEL */
 .library-page .library-block {
-  flex: 1; /* Force les 3 colonnes à prendre exactement la même largeur */
-  min-width: 0; /* Permet le bon redimensionnement des enfants */
+  flex: 1; 
+  min-width: 0; 
   background: #181818;
   padding: 1.5rem;
   border-radius: 10px;
@@ -41,17 +41,17 @@
   border-color: #333;
 }
 
-/* --- TITRE DU BLOC --- */
+/* TITRE DU BLOC */
 .library-page .library-block h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #e50914; /* Le rouge reste réservé aux titres de catégories */
+  color: #e50914; 
   margin-bottom: 1.2rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid #282828;
 }
 
-/* --- MESSAGE VIDE --- */
+/* MESSAGE VIDE */
 .library-page .empty-category {
   color: #757575;
   font-size: 0.95rem;
@@ -60,7 +60,7 @@
   font-style: italic;
 }
 
-/* --- GRILLE DES FILMS --- */
+/* GRILLE DES FILMS */
 .library-page .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -68,7 +68,7 @@
   justify-items: center;
 }
 
-/* --- ITEM FILM --- */
+/* ITEM FILM */
 .library-page .library-item {
   width: 100%;
   max-width: 150px;
@@ -87,7 +87,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
 }
 
-/* --- MOVIE CARD COMPACTE --- */
+/* MOVIE CARD COMPACTE */
 .library-page .library-item .movie-card {
   width: 100%;
   padding: 0;
@@ -117,7 +117,7 @@
   border-radius: 4px;
 }
 
-/* --- BOUTONS CATÉGORIE --- */
+/* BOUTONS CATÉGORIE  */
 .library-page .category-buttons {
   margin-top: 0.4rem;
   display: flex;

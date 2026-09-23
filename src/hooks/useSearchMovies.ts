@@ -9,6 +9,7 @@ export function useSearchMovies(query: string) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Requête vide -> pas d'appel API
     if (!query) return;
 
     setLoading(true);
@@ -16,12 +17,14 @@ export function useSearchMovies(query: string) {
 
     searchMovies(query)
       .then((data) => {
+        // Sécurité si API renvoie réponse invalide ou 0 résultats
         if (!data || !data.results) {
           setResults([]);
           setLoading(false);
           return;
         }
 
+        // Conversion résultats TMDB au format de l'app
         const converted = data.results.map(convertTMDB);
         setResults(converted);
         setLoading(false);

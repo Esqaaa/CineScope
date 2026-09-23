@@ -5,6 +5,7 @@ import MovieCard from "../components/MovieCard";
 import "../styles/Films.css";
 import "../styles/SearchBar.css";
 
+// Interface pour props (Favoris + Bibliothèque)
 interface FilmsProps {
   favorites?: number[];
   setFavorites?: React.Dispatch<React.SetStateAction<number[]>>;
@@ -12,6 +13,7 @@ interface FilmsProps {
   setLibrary?: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
+// Page des films (Recherche + films populaires)
 function Films({
   favorites = [],
   setFavorites = () => {},
@@ -27,6 +29,7 @@ function Films({
   // Données de la recherche
   const { results: searchResults, loading: loadingSearch, error: errorSearch } = useSearchMovies(search);
 
+  // Utilisateur recherche quelque chose ?
   const isSearching = search.trim().length > 0;
 
   return (
@@ -39,7 +42,7 @@ function Films({
         className="search-input"
       />
 
-      {/* --- CAS 1 : MODE RECHERCHE --- */}
+      {/* Mode recherche */}
       {isSearching ? (
         <>
           <h2>Résultats de la recherche</h2>
@@ -69,7 +72,7 @@ function Films({
           )}
         </>
       ) : (
-        /* --- CAS 2 : MODE POPULAIRES (PAR DÉFAUT) --- */
+        /* Mode films populaires */
         <>
           <h2>Films populaires</h2>
 
@@ -99,6 +102,7 @@ function Films({
                 ))}
               </div>
 
+              {/* Pagination */}
               <div className="pagination">
                 <button disabled={page === 1} onClick={() => setPage(page - 1)}>
                   Page précédente

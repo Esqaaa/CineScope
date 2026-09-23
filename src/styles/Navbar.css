@@ -11,7 +11,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 15px; /* Espace entre "Connecté en tant que" et le bouton */
+  gap: 15px; 
 }
 
 /* Texte "Connecté en tant que :" */
@@ -19,7 +19,7 @@
   color: #ccc;
   font-size: 0.9rem;
   margin: 0;
-  white-space: nowrap; /* Évite d'avoir le texte découpé sur deux lignes */
+  white-space: nowrap; 
 }
 
 /* Bouton Connexion + Déconnexion */
@@ -37,4 +37,43 @@
 .login-right button:hover,
 .logout-btn:hover {
   background: #b00610;
+}
+
+@media (max-width: 575px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .login-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .login-right button,
+  .logout-btn {
+    width: 100%;
+    max-width: 220px;
+    padding: 8px 0;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary, 
+  .btn-secondary {
+    width: 100%;
+  }
 }

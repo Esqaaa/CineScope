@@ -7,6 +7,7 @@ import { useLibrary } from "../context/LibraryContext";
 
 import { useMovieDetails } from "../hooks/useMovieDetails";
 
+// Détails d'un film
 function MoviePage() {
   const { id } = useParams();
   const { movie, actors, loading, error } = useMovieDetails(Number(id));
@@ -49,18 +50,21 @@ function MoviePage() {
 
   return (
     <section className="movie-page">
+      {/* Bouton de retour */}
       <div className="back-wrapper">
         <Link to="/film">
           <button className="back-button">Retour aux films</button>
         </Link>
       </div>
 
+      {/* Informations principales et affiche */}
       <div className="movie-header">
         <img src={movie.poster ?? ""} alt={movie.title} />
 
         <div className="movie-page-content">
           <h2>{movie.title}</h2>
 
+          {/* Métadonnées du film */}
           <div className="movie-info">
             <p>
               <strong>Année :</strong> {movie.releaseDate}
@@ -92,6 +96,7 @@ function MoviePage() {
         </div>
       </div>
 
+      {/* Section des acteurs */}
       <div className="actors-section">
         <h3>Acteurs</h3>
         <div className="actors-grid">

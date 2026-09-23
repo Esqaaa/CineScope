@@ -55,3 +55,25 @@
 .profile-form textarea {
   resize: none; 
 }
+
+/* Ajouts pour la gestion d'erreurs et messages */
+.profile-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.profile-error {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  margin-top: -0.2rem;
+}
+
+.profile-success {
+  background-color: #2e7d32;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}

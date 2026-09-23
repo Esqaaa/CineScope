@@ -1,4 +1,4 @@
-/* --- RESET --- */
+/* RESET */
 body {
   margin: 0;
   background: #141414;
@@ -6,7 +6,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* --- NAVBAR --- */
+/* NAVBAR */
 nav {
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@ nav button:hover {
   color: #e50914;
 }
 
-/* --- SEARCH BAR --- */
+/* SEARCH BAR */
 form {
   display: flex;
   gap: 0.5rem;
@@ -65,7 +65,7 @@ form button:hover {
   background: #b00610;
 }
 
-/* --- MOVIE GRID --- */
+/* MOVIE GRID */
 section {
   padding: 1rem 2rem;
 }
@@ -73,17 +73,17 @@ section {
 .movie-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centre tous les éléments, y compris la dernière ligne */
+  justify-content: center; 
   gap: 1.5rem;
   width: 100%;
 }
 
 .movie-grid > * {
-  flex: 1 1 250px; /* Équivalent du minmax(250px, 1fr) */
-  max-width: 350px; /* Optionnel : évite que les cartes de la dernière ligne ne deviennent géantes s'il en reste 1 ou 2 */
+  flex: 1 1 250px;
+  max-width: 350px;
 }
 
-/* --- MOVIE CARD --- */
+/* MOVIE CARD */
 .movie-card {
   background: #1a1a1a;
   padding: 0.8rem;
@@ -101,7 +101,7 @@ section {
   margin-bottom: 0.5rem;
 }
 
-/* --- TEXT --- */
+/* TEXT */
 .movie-card h3 {
   margin: 0.3rem 0;
   font-size: 1rem;
@@ -112,7 +112,7 @@ section {
   color: #bbb;
 }
 
-/* --- BUTTONS --- */
+/* BUTTONS */
 .movie-card button {
   width: 100%;
   margin-top: 0.5rem;
@@ -128,7 +128,7 @@ section {
   background: #b00610;
 }
 
-/* --- Error Boundary --- */
+/* Error Boundary */
 .error-boundary-container {
   display: flex;
   justify-content: center;

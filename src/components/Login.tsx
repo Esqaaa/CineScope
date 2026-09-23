@@ -6,6 +6,7 @@ interface LoginProps {
   setIsAuthenticated: (auth: boolean) => void;
 }
 
+// Page de login
 function Login({ setIsAuthenticated }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,11 +14,13 @@ function Login({ setIsAuthenticated }: LoginProps) {
 
   const navigate = useNavigate();
 
+  // Soumission formulaire + Vérification
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
     const saved = localStorage.getItem("user");
 
+    // Vérifie si un compte existe en local ou non
     if (!saved) {
       setError("Aucun compte trouvé. Veuillez en créer un ci-dessous.");
       return;
@@ -25,6 +28,7 @@ function Login({ setIsAuthenticated }: LoginProps) {
 
     const user = JSON.parse(saved);
 
+    // Valide le mot de passe/email
     if (email === user.email && password === user.password) {
       localStorage.setItem("logged", "true");
       setIsAuthenticated(true);
@@ -38,6 +42,7 @@ function Login({ setIsAuthenticated }: LoginProps) {
     <section className="login-page">
       <h2>Connexion</h2>
 
+      {/* Formulaire de connexion */}
       <form className="login-form" onSubmit={handleLogin}>
         <label>Email</label>
         <input
@@ -62,6 +67,7 @@ function Login({ setIsAuthenticated }: LoginProps) {
         </button>
       </form>
 
+      {/* Redirection vers création de compte */}
       <div style={{ marginTop: "1.5rem", textAlign: "center" }}>
         <p>Pas encore de compte ?</p>
         <button

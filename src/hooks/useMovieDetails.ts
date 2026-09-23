@@ -13,14 +13,17 @@ export function useMovieDetails(id: number) {
     setLoading(true);
     setError(false);
 
+    // Récupération infos du film
     fetchMovieDetails(id)
       .then((data) => {
+        // Traitement si API renvoie film inexistant
         if (!data || data.success === false) {
           setMovie(null);
           setLoading(false);
           return;
         }
 
+        // Conversion données TMDB au format de l'app
         setMovie(convertTMDB(data));
         setLoading(false);
       })
@@ -29,9 +32,12 @@ export function useMovieDetails(id: number) {
         setLoading(false);
       });
 
+    // Récupération casting du film
     fetchMovieCredits(id)
       .then((data) => setActors(convertActors(data)))
-      .catch(() => {});
+      .catch(() => {
+        // En cas d'échec, on conserve tableau vide
+      });
   }, [id]);
 
   return { movie, actors, loading, error };

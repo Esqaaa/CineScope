@@ -143,7 +143,13 @@ function App() {
             }
           />
 
-          <Route path="*" element={<NotFound />} />
+          {/* Capture des routes non définies (Erreur 404) */}
+          <Route path="*" 
+            element={
+              <NotFound />
+            } 
+          />
+        
         </Routes>
       </main>
     </BrowserRouter>

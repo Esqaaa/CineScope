@@ -7,9 +7,11 @@ interface MovieGridProps {
   setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
+// Grille d'affichage films
 function MovieGrid({ favorites, setFavorites }: MovieGridProps) {
   return (
     <div className="movie-grid">
+      {/* Rendu dynamique des cartes */}
       {movies.map((movie: Movie) => (
         <MovieCard
           key={movie.id}

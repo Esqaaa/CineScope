@@ -1,5 +1,6 @@
 import type { Movie, Actor } from "../utils/types";
 
+// Types internes décrivant la structure des objets renvoyés par l'API TMDB
 interface TMDBGenre {
   id: number;
   name: string;
@@ -35,6 +36,7 @@ interface TMDBCredits {
   cast: TMDBCastMember[];
 }
 
+// Convertit un objet film TMDB brut vers le format d'interface "Movie" de l'application
 export function convertTMDB(movie: unknown): Movie {
   const m = movie as TMDBMovie;
 
@@ -55,6 +57,7 @@ export function convertTMDB(movie: unknown): Movie {
   };
 }
 
+// Extrait et filtre les 10 premiers acteurs disposant d'une photo de profil
 export function convertActors(data: unknown): Actor[] {
   const d = data as TMDBCredits;
 

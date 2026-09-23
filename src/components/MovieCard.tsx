@@ -9,25 +9,35 @@ interface MovieCardProps extends Movie {
   isLibrary?: boolean;
 }
 
+// Nom des statuts
 const STATUS_LABELS: Record<string, string> = {
   towatch: "À regarder",
   inprogress: "En cours",
   watched: "Vu",
 };
 
+// Carte de film avec favoris, statut et suppression de bibliothèque
 function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieCardProps) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
-  const { library, addToLibrary, setStatus } = useLibrary();
+  const { library, addToLibrary, setStatus, removeFromLibrary } = useLibrary();
 
-  // On récupère le statut actuel du film
+  // Statut actuel du film
   const currentStatus = library[id];
 
+  // Bascule le favori
   function handleFavorite() {
     isFavorite(id) ? removeFavorite(id) : addFavorite(id);
   }
 
+  // Gestion du changement de catégorie ou suppression
   function handleCategoryChange(value: string) {
     if (!value) return;
+
+    if (value === "remove") {
+      removeFromLibrary(id);
+      return;
+    }
+
     addToLibrary(id);
     setStatus(id, value as "towatch" | "inprogress" | "watched");
   }
@@ -41,7 +51,7 @@ function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieC
           <div className="no-poster">Affiche indisponible</div>
         )}
 
-        {/* Badge : Affiche toujours le statut actuel en mode bibliothèque */}
+        {/* Badge de statut si en bibliothèque */}
         {isLibrary && currentStatus && (
           <span className={`status-badge status-${currentStatus}`}>
             {STATUS_LABELS[currentStatus]}
@@ -72,17 +82,23 @@ function MovieCard({ id, title, poster, releaseDate, isLibrary = false }: MovieC
         </>
       )}
 
-      {/* Mode Bibliothèque : Permet de changer le statut dans les 2 sens */}
+      {/* Mode Bibliothèque : Changement de statut + Bouton de suppression */}
       {isLibrary && (
-        <select
-          className="category-select"
-          value={currentStatus || "towatch"}
-          onChange={(e) => setStatus(id, e.target.value as "towatch" | "inprogress" | "watched")}
-        >
-          <option value="towatch">À regarder</option>
-          <option value="inprogress">En cours</option>
-          <option value="watched">Vu</option>
-        </select>
+        <>
+          <select
+            className="category-select"
+            value={currentStatus || "towatch"}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+          >
+            <option value="towatch">À regarder</option>
+            <option value="inprogress">En cours</option>
+            <option value="watched">Vu</option>
+          </select>
+
+          <button className="remove-library-btn" onClick={() => removeFromLibrary(id)}>
+            Retirer de la bibliothèque
+          </button>
+        </>
       )}
 
       <Link to={`/film/${id}`}>

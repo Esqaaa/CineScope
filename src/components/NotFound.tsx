@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/NotFound.css";
 
+// Page 404 lorsque route existe pas
 function NotFound() {
   return (
     <section className="notfound">
@@ -8,8 +9,9 @@ function NotFound() {
 
       <p className="nf-message">La page que vous recherchez n'existe pas.</p>
 
-      <Link to="/">
-        <button className="nf-button">Retour à l'accueil</button>
+      {/* Redirection vers films */}
+      <Link to="/film">
+        <button className="nf-button">Retour aux films</button>
       </Link>
     </section>
   );

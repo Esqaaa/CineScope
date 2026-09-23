@@ -1,10 +1,12 @@
 import "../styles/SearchBar.css";
 
+// Typage des props
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
 }
 
+// Barre de recherche 
 function SearchBar({ value, onChange }: SearchBarProps) {
   return (
     <input

@@ -6,6 +6,7 @@ import App from "./App";
 import { CineScopeProvider } from "./context/CineScopeProvider";
 import ErrorBoundary from "./components/ErrorBoundary";
 
+// Rendu de l'application
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ErrorBoundary>

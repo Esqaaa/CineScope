@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
+// Page d'accueil 
 function Home() {
   useEffect(() => {
     // Bloque le scroll du navigateur
@@ -23,6 +24,7 @@ function Home() {
           Explorez les films, gérez vos favoris et retrouvez vos consultations.
         </p>
 
+        {/* Liens de navigation principale */}
         <div className="home-buttons">
           <Link to="/film">
             <button className="btn-primary">Voir les films</button>

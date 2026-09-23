@@ -8,27 +8,30 @@ interface State {
   hasError: boolean;
 }
 
+// Composant d'écran de secours si crash critique de l'app
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
   };
 
+  // Intercepte l'erreur et met à jour l'erreur
   public static getDerivedStateFromError(_: Error): State {
-    // Met à jour l'état pour que le prochain rendu affiche l'interface de secours
     return { hasError: true };
   }
 
+  // Log l'erreur + informations de rendu dans la console
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Erreur capturée par l'ErrorBoundary :", error, errorInfo);
   }
 
+  // Reinitialise état et redirige vers l'accueil
   private handleReset = () => {
-    // Réinitialise l'état d'erreur et redirige vers l'accueil
     this.setState({ hasError: false });
     window.location.href = "/";
   };
 
   public render() {
+    // Erreur -> affichage de secours
     if (this.state.hasError) {
       return (
         <div className="error-boundary-container">
@@ -43,6 +46,7 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
+    // Sinon, on affiche le composant normal
     return this.props.children;
   }
 }

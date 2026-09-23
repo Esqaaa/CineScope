@@ -4,11 +4,13 @@ interface MovieInfoProps {
   movie: Movie;
 }
 
+// Affichage infos détaillées
 function MovieInfo({ movie }: MovieInfoProps) {
   return (
     <div>
       <h2>{movie.title}</h2>
 
+      {/* Métadonnées principales */}
       <div className="movie-info">
         <p>
           <strong>Année :</strong> {movie.releaseDate}
@@ -21,6 +23,7 @@ function MovieInfo({ movie }: MovieInfoProps) {
         </p>
       </div>
 
+      {/* Liste des genres */}
       <div className="genres">
         {movie.genres.map((g: string) => (
           <span key={g} className="genre-badge">

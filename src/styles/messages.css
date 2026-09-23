@@ -1,4 +1,4 @@
-/* --- MESSAGE DE CHARGEMENT --- */
+/* MESSAGE DE CHARGEMENT */
 .loading {
   text-align: center;
   font-size: 1.6rem;
@@ -8,7 +8,7 @@
   letter-spacing: 0.5px;
 }
 
-/* --- BLOC ERREUR --- */
+/* BLOC ERREUR */
 .error-block {
   text-align: center;
   margin-top: 3rem;
@@ -27,7 +27,7 @@
   margin: 0.5rem 0;
 }
 
-/* --- BOUTON REESSAYER --- */
+/* BOUTON REESSAYER */
 .retry-button {
   margin-top: 1.5rem;
   padding: 0.8rem 1.4rem;

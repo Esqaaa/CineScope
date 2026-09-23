@@ -7,7 +7,9 @@ interface MovieActionsProps {
   setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
+// Composant qui gère le retour et basculement des favoris
 function MovieActions({ movie, favorites, setFavorites }: MovieActionsProps) {
+  // Ajoute ou retire des favoris
   function toggleFavorite() {
     if (favorites.includes(movie.id)) {
       setFavorites(favorites.filter((f: number) => f !== movie.id));
@@ -18,10 +20,12 @@ function MovieActions({ movie, favorites, setFavorites }: MovieActionsProps) {
 
   return (
     <div className="movie-actions">
-      <Link to="/movies">
+      {/* Lien de retour aux films */}
+      <Link to="/films">
         <button className="back-button">Retour aux films</button>
       </Link>
 
+      {/* Bouton dynamique Ajout/Retrait */}
       <button className="fav-button" onClick={toggleFavorite}>
         {favorites.includes(movie.id)
           ? "Retirer des favoris"

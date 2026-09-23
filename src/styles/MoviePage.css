@@ -1,4 +1,4 @@
-/* --- PAGE FILM --- */
+/* PAGE FILM */
 .movie-page {
   padding: 3rem 2rem;
   display: flex;
@@ -19,7 +19,7 @@
   }
 }
 
-/* --- BOUTON RETOUR --- */
+/* BOUTON RETOUR */
 .back-button {
   background: #e50914;
   border: none;
@@ -44,16 +44,16 @@
 }
 
 
-/* --- BLOC AFFICHE + TEXTE CENTRÉ --- */
+/* BLOC AFFICHE + TEXTE CENTRÉ */
 .movie-header {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 👉 affiche centrée */
-  text-align: center;  /* 👉 texte centré */
+  align-items: center; 
+  text-align: center; 
   max-width: 800px;
 }
 
-/* --- AFFICHE --- */
+/* AFFICHE */
 .movie-header img {
   width: 380px;
   border-radius: 12px;
@@ -66,13 +66,13 @@
   transform: scale(1.03);
 }
 
-/* --- CONTENU --- */
+/* CONTENU */
 .movie-page-content {
   max-width: 700px;
   width: 100%;
 }
 
-/* --- TITRE --- */
+/* TITRE  */
 .movie-page-content h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -81,7 +81,7 @@
   letter-spacing: 1px;
 }
 
-/* --- INFOS --- */
+/* INFOS */
 .movie-info {
   margin: 1rem 0;
   font-size: 1.2rem;
@@ -92,7 +92,7 @@
   margin: 0.3rem 0;
 }
 
-/* --- GENRES --- */
+/* GENRES */
 .genres {
   margin: 1rem 0;
   display: flex;
@@ -116,7 +116,7 @@
   background: #2a2a2a;
 }
 
-/* --- DESCRIPTION --- */
+/* DESCRIPTION */
 .movie-description {
   margin-top: 1.8rem;
   line-height: 1.7;
@@ -124,7 +124,7 @@
   font-size: 1.15rem;
 }
 
-/* --- BOUTON FAVORI --- */
+/* BOUTON FAVORI */
 .fav-button {
   background: #333;
   border: 1px solid #555;
@@ -145,7 +145,7 @@
   border-color: #e50914;
 }
 
-/* --- SECTION ACTEURS --- */
+/* SECTION ACTEURS */
 .actors-section {
   width: 100%;
   margin-top: 3rem;
@@ -161,10 +161,10 @@
   letter-spacing: 1px;
 }
 
-/* --- GRILLE ACTEURS --- */
+/* GRILLE ACTEURS */
 .actors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
   gap: 2rem;
   padding: 0 1rem;
   justify-items: center; 

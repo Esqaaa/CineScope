@@ -7,16 +7,20 @@ import type { Movie } from "../utils/types";
 
 import { useFavorites } from "../context/FavoritesContext";
 
+// Page qui affiche les favoris
 function Favoris() {
+  // Récupération des IDs 
   const { favorites } = useFavorites();
 
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Charge les détails du film favori
   useEffect(() => {
     async function loadFavorites() {
       setLoading(true);
 
+      // Aucun favori -> on vide la liste et stop chargement
       if (favorites.length === 0) {
         setMovies([]);
         setLoading(false);
@@ -37,6 +41,7 @@ function Favoris() {
     loadFavorites();
   }, [favorites]);
 
+  // Ecran de chargement pendant le chargement 
   if (loading) {
     return <div className="loading">Chargement des favoris...</div>;
   }
@@ -45,6 +50,7 @@ function Favoris() {
     <section className="favorites-page">
       <h2>Mes Favoris</h2>
 
+      {/* Si liste vide -> message */}
       {favorites.length === 0 && (
         <div className="no-favorites">
           <p>Tu n’as encore ajouté aucun film en favori.</p>
@@ -56,6 +62,7 @@ function Favoris() {
         </div>
       )}
 
+      {/* Grille des favoris */}
       <div className="movie-grid">
         {movies.map((movie) => (
           <MovieCard key={movie.id} {...movie} />

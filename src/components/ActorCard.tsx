@@ -1,6 +1,7 @@
 import type { Actor } from "../utils/types";
 import "../styles/ActorCard.css";
 
+// Composant d'affichage pour une carte d'acteur (photo, nom, personnage)
 function ActorCard({ name, character, profile }: Actor) {
   return (
     <div className="actor-card">

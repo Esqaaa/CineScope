@@ -1,4 +1,4 @@
-/* --- RESET ET BASE GLOBALE --- */
+/* RESET ET BASE GLOBALE */
 *,
 *::before,
 *::after {
@@ -23,7 +23,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- CONTENEUR PRINCIPAL RESPONSIVE --- */
+/* CONTENEUR PRINCIPAL RESPONSIVE */
 #root {
   width: 100%;
   max-width: 100%;
@@ -34,7 +34,7 @@ body {
   padding: 0 2rem;
 }
 
-/* --- TYPOGRAPHIE GLOBALE --- */
+/* TYPOGRAPHIE GLOBALE */
 h1, h2, h3, h4 {
   font-weight: 700;
   color: #ffffff;

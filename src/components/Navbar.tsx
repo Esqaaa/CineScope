@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 
+// Barre de navigatino
 function Navbar() {
+  // Etat de connexion
   const [logged, setLogged] = useState(
     localStorage.getItem("logged") === "true",
   );
@@ -18,6 +20,7 @@ function Navbar() {
     return () => window.removeEventListener("storage", updateLogin);
   }, []);
 
+  // Déconnecte + redirige vers connexion
   function handleLogout() {
     localStorage.removeItem("logged");
     window.dispatchEvent(new Event("storage"));
@@ -28,6 +31,7 @@ function Navbar() {
     <nav className="navbar">
       <h1>CineScope</h1>
 
+      {/* Liens de navigation principaux */}
       <Link to="/">
         <button>Accueil</button>
       </Link>
@@ -48,7 +52,7 @@ function Navbar() {
         <button>Profil</button>
       </Link>
 
-      {/* Regroupement à droite */}
+      {/* Zone d' authentification */}
       <div className="login-right">
         {logged && (
           <p className="connected-as">Connecté en tant que : {user.pseudo}</p>
