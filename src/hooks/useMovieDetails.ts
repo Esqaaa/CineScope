@@ -36,7 +36,7 @@ export function useMovieDetails(id: number) {
     fetchMovieCredits(id)
       .then((data) => setActors(convertActors(data)))
       .catch(() => {
-        // En cas d'échec, on conserve tableau vide
+        // En cas d'échec, on conserve tableau vide (pas de clean)
       });
   }, [id]);
 
