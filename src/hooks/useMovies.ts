@@ -35,7 +35,7 @@ export function useMovies(page: number) {
     };
   }, [page]);
 
-  // Déclenche le chargement à chaque changement de page
+  // Déclenche le chargement à chaque changement de page (cleanup)
   useEffect(() => {
     const cleanup = loadMovies();
     return cleanup;
