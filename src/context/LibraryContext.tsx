@@ -27,7 +27,7 @@ export function LibraryProvider({ children }: { children: React.ReactNode }) {
     return saved ? JSON.parse(saved) : {};
   });
 
-  // Sauvegarde automatique dans le localStorage à chaque modification
+  // Sauvegarde automatique dans le localStorage à chaque modification (s'excétute qu'une fois au 1er rendu)
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(library));
   }, [library]);
