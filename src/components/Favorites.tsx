@@ -20,7 +20,7 @@ function Favoris() {
     async function loadFavorites() {
       setLoading(true);
 
-      // Aucun favori -> on vide la liste et stop chargement
+      // Aucun favori -> on vide la liste et stop chargement (pas de clean)
       if (favorites.length === 0) {
         setMovies([]);
         setLoading(false);
