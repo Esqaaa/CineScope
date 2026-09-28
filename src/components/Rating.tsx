@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Rating.css"; // 👈 Import du CSS
+import "../styles/Rating.css"; 
 
 interface RatingProps {
   movieId: number;
